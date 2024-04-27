@@ -11,4 +11,14 @@ const submitForm = async (req, res) => {
   }
 };
 
-module.exports = { submitForm };
+const getAllCards = async (req, res) => {
+  try {
+    const cards = await getAllCats();
+    res.json(cards);
+  } catch (err) {
+    console.error("Error getting cards:", err);
+    res.status(500).json({ message: "Error getting cards" });
+  }
+};
+
+module.exports = { submitForm, getAllCards };
